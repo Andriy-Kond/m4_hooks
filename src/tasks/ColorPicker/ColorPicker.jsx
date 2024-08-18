@@ -6,9 +6,13 @@ import {
 } from "./ColorPicker.styled";
 
 import getInvertHexColor from "js/getInvertHexColor";
+import colorsBase from "js/getColorsBase";
 
 class ColorPicker extends Component {
-  state = { activeIndex: null };
+  state = {
+    activeIndex: null,
+    colors: colorsBase(),
+  };
 
   handleClick = index => {
     this.setState({
@@ -17,8 +21,7 @@ class ColorPicker extends Component {
   };
 
   render() {
-    const { activeIndex } = this.state;
-    const { colors } = this.props;
+    const { activeIndex, colors } = this.state;
     const activeColor = activeIndex ? colors[activeIndex].hex : "жоден";
 
     return (
