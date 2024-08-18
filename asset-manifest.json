@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/m4_hooks/static/js/main.0092afb1.js",
+    "main.js": "/m4_hooks/static/js/main.0ae349db.js",
     "index.html": "/m4_hooks/index.html",
-    "main.0092afb1.js.map": "/m4_hooks/static/js/main.0092afb1.js.map"
+    "main.0ae349db.js.map": "/m4_hooks/static/js/main.0ae349db.js.map"
   },
   "entrypoints": [
-    "static/js/main.0092afb1.js"
+    "static/js/main.0ae349db.js"
   ]
 }
