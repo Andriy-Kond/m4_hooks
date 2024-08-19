@@ -10,7 +10,7 @@ import { useState } from "react";
 
 function ColorPicker() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [colors, setColors] = useState(colorsBase());
+  const [colors] = useState(colorsBase());
 
   const handleClick = index => {
     setActiveIndex(index !== activeIndex ? index : null);

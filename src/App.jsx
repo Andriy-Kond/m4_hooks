@@ -1,10 +1,12 @@
+import Pokemon from "tasks/Pokemon";
 import ColorPicker from "./tasks/ColorPicker";
 
 function App() {
   return (
     <>
       <div>
-        <ColorPicker />
+        {/* <ColorPicker /> */}
+        <Pokemon />
       </div>
     </>
   );
