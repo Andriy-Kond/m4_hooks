@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.js": "/m4_hooks/static/js/main.0ae349db.js",
+    "main.js": "/m4_hooks/static/js/main.94dd76e6.js",
+    "static/media/pending.gif": "/m4_hooks/static/media/pending.532209977e41a8616a41.gif",
+    "static/media/error.gif": "/m4_hooks/static/media/error.4d1f2add9a363db57ac6.gif",
     "index.html": "/m4_hooks/index.html",
-    "main.0ae349db.js.map": "/m4_hooks/static/js/main.0ae349db.js.map"
+    "main.94dd76e6.js.map": "/m4_hooks/static/js/main.94dd76e6.js.map"
   },
   "entrypoints": [
-    "static/js/main.0ae349db.js"
+    "static/js/main.94dd76e6.js"
   ]
 }
