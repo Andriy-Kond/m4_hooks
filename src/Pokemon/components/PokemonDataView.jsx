@@ -5,7 +5,7 @@ function PokemonDataView({ pokemon: { name, sprites, stats } }) {
       <p>Зображення покемона:</p>
       <img
         alt={name}
-        width={300}
+        height={300}
         src={sprites.other["official-artwork"].front_default}
       />
       <h3>Stats:</h3>

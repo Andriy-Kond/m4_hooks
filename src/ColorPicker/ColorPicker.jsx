@@ -4,8 +4,8 @@ import {
   ButtonsContainer,
 } from "./ColorPicker.styled";
 
-import getInvertHexColor from "js/getInvertHexColor";
-import colorsBase from "js/getColorsBase";
+import getInvertHexColor from "./js/getInvertHexColor";
+import colorsBase from "./js/getColorsBase";
 import { useState } from "react";
 
 function ColorPicker() {

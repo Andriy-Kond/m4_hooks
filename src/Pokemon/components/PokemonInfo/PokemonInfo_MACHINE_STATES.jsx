@@ -40,7 +40,7 @@ function PokemonInfo({ pokemonName, setPokemonName }) {
       } finally {
         setPokemonName("");
       }
-    }, 1000);
+    }, 500);
   }, [pokemonName, setPokemonName]);
 
   if (status === machineStatus.IDLE) {
