@@ -1,6 +1,7 @@
 import Pokemon from "Pokemon";
 import ColorPicker from "ColorPicker";
 import Todo from "Todo";
+import Tabs from "Tabs";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <div>
         {/* <ColorPicker /> */}
         {/* <Pokemon /> */}
-        <Todo />
+        {/* <Todo /> */}
+        <Tabs />
       </div>
     </>
   );
