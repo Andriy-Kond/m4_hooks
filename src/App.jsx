@@ -1,14 +1,14 @@
 import { GlobalStyle } from "GlobalStyle";
 
-import ColorPicker from "ColorPicker";
-import Pokemon from "Pokemon";
-import Todo from "Todo";
+// import ColorPicker from "ColorPicker";
+// import Pokemon from "Pokemon";
+// import Todo from "Todo";
 import Tabs from "Tabs";
-import Clock from "Clock";
-import LoginForm from "LoginForm";
-import Materials from "Materials";
-import Publications from "Publications";
-import VideoPlayer from "VideoPlayer";
+// import Clock from "Clock";
+// import LoginForm from "LoginForm";
+// import Materials from "Materials";
+// import Publications from "Publications";
+// import VideoPlayer from "VideoPlayer";
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
       {/* <ColorPicker /> */}
       {/* <Pokemon /> */}
       {/* <Todo /> */}
-      {/* <Tabs /> */}
-      <Clock />
+      <Tabs />
+      {/* <Clock /> */}
       {/* <LoginForm /> */}
       {/* <Materials /> */}
       {/* <Publications /> */}

@@ -1,51 +1,43 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import items from "./database/tabs.json";
 
-class Tabs extends Component {
-  state = {
-    activeTabIdx: 0,
+function Tabs() {
+  const [activeTabIdx, setActiveTabIdx] = useState(0);
+  const activeTab = items[activeTabIdx];
+
+  console.log("Re-render :>>", Date.now(), new Date().toLocaleTimeString());
+
+  // При кліку на ту саму кнопку вдруге React рендерить знову, бо перевіряє рівність вже після того як поставив в чергу виконнання setActiveTabIdx (третього рендеру вже не відбувається)
+  const setActiveTabIdx1 = idx => {
+    // запобігання другому рендеру:
+    if (idx !== activeTabIdx) {
+      setActiveTabIdx(idx);
+    }
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // перерендер відбудеться лише за умови коли...
-    return nextState.activeTabIdx !== this.state.activeTabIdx;
-  }
+  return (
+    <>
+      <div>
+        {items.map((item, idx) => {
+          return (
+            <button
+              type="button"
+              key={item.label}
+              onClick={() => {
+                setActiveTabIdx1(idx);
+              }}>
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
 
-  setActiveTabIdx = idx => {
-    this.setState({ activeTabIdx: idx });
-  };
-
-  render() {
-    console.log("Re-render :>>", Date.now(), new Date().toLocaleTimeString());
-
-    const { activeTabIdx } = this.state;
-
-    const activeTab = items[activeTabIdx];
-
-    return (
-      <>
-        <div>
-          {items.map((item, idx) => {
-            return (
-              <button
-                type="button"
-                key={item.label}
-                onClick={() => {
-                  this.setActiveTabIdx(idx);
-                }}>
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
-
-        <div>
-          <h1>{activeTab.label}</h1>
-          <p>{activeTab.content}</p>
-        </div>
-      </>
-    );
-  }
+      <div>
+        <h1>{activeTab.label}</h1>
+        <p>{activeTab.content}</p>
+      </div>
+    </>
+  );
 }
 
 export default Tabs;
