@@ -13,7 +13,7 @@ import { ReactComponent as IconSVG } from "./icons/add_icon.svg";
 
 // import RegisterForm from "TodoList/RegisterForm";
 
-class App extends Component {
+class Todo extends Component {
   state = {
     todos: [],
     filter: "",
@@ -173,4 +173,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Todo;

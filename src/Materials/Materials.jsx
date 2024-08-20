@@ -4,7 +4,7 @@ import MaterialsForm from "./components/MaterialsForm";
 import materialsAPI from "./services/materialsAPI";
 import MaterialsList from "./components/MaterialsList";
 
-class App extends Component {
+class Materials extends Component {
   state = { materials: [], isLoading: false, error: null };
 
   componentDidMount = async () => {
@@ -86,4 +86,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Materials;
