@@ -1,12 +1,14 @@
-import Pokemon from "tasks/Pokemon";
-import ColorPicker from "tasks/ColorPicker";
+import Pokemon from "Pokemon";
+import ColorPicker from "ColorPicker";
+import Todo from "Todo";
 
 function App() {
   return (
     <>
       <div>
-        <ColorPicker />
-        <Pokemon />
+        {/* <ColorPicker /> */}
+        {/* <Pokemon /> */}
+        <Todo />
       </div>
     </>
   );

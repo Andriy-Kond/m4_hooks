@@ -1,4 +1,4 @@
-import errorImage from "./error.gif";
+import errorImage from "../img/error.gif";
 
 export default function PokemonErrorView({ message }) {
   return (

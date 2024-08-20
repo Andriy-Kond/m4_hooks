@@ -1,4 +1,7 @@
-import styled, { keyframes } from "styled-components";
+// import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
+
 import { ImSpinner } from "react-icons/im";
 
 const rotate = keyframes`

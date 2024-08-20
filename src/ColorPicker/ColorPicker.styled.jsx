@@ -1,6 +1,7 @@
 import styled from "styled-components";
+// import styled from "@emotion/styled";
 
-// styled-components ()на відміну від @emotion-styled) не фільтрує автоматично нестандартні пропси, що передаються у DOM-елементи.
+// styled-components (на відміну від @emotion-styled) не фільтрує автоматично нестандартні пропси, що передаються у DOM-елементи.
 
 //  В цьому випадку пропси isActive, hexColor, та invertColor передаються до кнопки <button>, що викликає попередження в консолі, адже ці пропси не є стандартними для HTML елементів і не повинні передаватися до DOM.
 

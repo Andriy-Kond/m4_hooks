@@ -5,8 +5,8 @@ import {
   ButtonsContainer,
 } from "./ColorPicker.styled";
 
-import getInvertHexColor from "js/getInvertHexColor";
-import colorsBase from "js/getColorsBase";
+import getInvertHexColor from "./js/getInvertHexColor";
+import colorsBase from "./js/getColorsBase";
 
 class ColorPicker extends Component {
   state = {

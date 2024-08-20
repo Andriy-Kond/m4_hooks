@@ -5,7 +5,7 @@ import { Notify } from "notiflix/build/notiflix-notify-aio";
 import PokemonErrorView from "./PokemonErrorView";
 import PokemonDataView from "./PokemonDataView";
 import PokemonPendingView from "./PokemonPendingView";
-import { fetchPokemon } from "./fetchPokemon";
+import { fetchPokemon } from "../js/fetchPokemon";
 
 const URL = "https://pokeapi.co/api/v2/pokemon";
 

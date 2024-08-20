@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import PokemonDataView from "./PokemonDataView";
 import { Spinner, StyledSpinner } from "./PokemonPendingView.styled";
-import pendingImage from "./pending.gif";
+import pendingImage from "../img/pending.gif";
 
 class PokemonPendingView extends Component {
   state = {
