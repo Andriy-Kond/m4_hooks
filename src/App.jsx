@@ -2,18 +2,23 @@ import Pokemon from "Pokemon";
 import ColorPicker from "ColorPicker";
 import Todo from "Todo";
 import Tabs from "Tabs";
+import Clock from "Clock";
+import { Component } from "react";
 
-function App() {
-  return (
-    <>
-      <div>
+class App extends Component {
+  state = {};
+  render() {
+    return (
+      <>
         {/* <ColorPicker /> */}
         {/* <Pokemon /> */}
         {/* <Todo /> */}
-        <Tabs />
-      </div>
-    </>
-  );
+        {/* <Tabs /> */}
+
+        <Clock />
+      </>
+    );
+  }
 }
 
 export default App;
