@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { GlobalStyle } from "./GlobalStyle";
 import MaterialsForm from "./components/MaterialsForm";
 import materialsAPI from "./services/materialsAPI";
 import MaterialsList from "./components/MaterialsList";
@@ -66,7 +65,6 @@ class Materials extends Component {
 
     return (
       <div>
-        <GlobalStyle />
         <MaterialsForm onSubmit={this.addMaterial} isLoading={isLoading} />
 
         {isLoading ? (

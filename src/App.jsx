@@ -1,18 +1,21 @@
-import Pokemon from "Pokemon";
-import ColorPicker from "ColorPicker";
-import Todo from "Todo";
-import Tabs from "Tabs";
-import Clock from "Clock";
 import { Component } from "react";
-import LoginForm from "LoginForm";
-import Materials from "Materials";
-import Publications from "Publications";
+import { GlobalStyle } from "GlobalStyle";
+// import ColorPicker from "ColorPicker";
+// import Pokemon from "Pokemon";
+// import Todo from "Todo";
+// import Tabs from "Tabs";
+// import Clock from "Clock";
+// import LoginForm from "LoginForm";
+// import Materials from "Materials";
+// import Publications from "Publications";
+import VideoPlayer from "VideoPlayer";
 
 class App extends Component {
   state = {};
   render() {
     return (
       <>
+        <GlobalStyle />
         {/* <ColorPicker /> */}
         {/* <Pokemon /> */}
         {/* <Todo /> */}
@@ -20,7 +23,8 @@ class App extends Component {
         {/* <Clock /> */}
         {/* <LoginForm /> */}
         {/* <Materials /> */}
-        <Publications />
+        {/* <Publications /> */}
+        <VideoPlayer />
       </>
     );
   }
