@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 // body.is-hidden {
 // 	/* заборона cкролу позаду модального вікна*/

@@ -3,15 +3,12 @@ import { Backdrop, Button, ModalWindow } from "./Modal.styled";
 import { createPortal } from "react-dom";
 
 const modalPortal = document.querySelector("#root-modal");
-
 class Modal extends Component {
   componentDidMount = () => {
-    // console.log("Modal componentDidMount");
     window.addEventListener("keydown", this.handleKeydownEsc);
   };
 
   componentWillUnmount() {
-    // console.log("Modal componentWillUnmount");
     window.removeEventListener("keydown", this.handleKeydownEsc);
   }
 
@@ -39,6 +36,7 @@ class Modal extends Component {
         </ModalWindow>
       </Backdrop>,
       modalPortal,
+      // або замість modalPortal так: document.querySelector("#root-modal"),
     );
   }
 }

@@ -5,6 +5,7 @@ import Tabs from "Tabs";
 import Clock from "Clock";
 import { Component } from "react";
 import LoginForm from "LoginForm";
+import Materials from "Materials";
 
 class App extends Component {
   state = {};
@@ -16,8 +17,8 @@ class App extends Component {
         {/* <Todo /> */}
         {/* <Tabs /> */}
         {/* <Clock /> */}
-
-        <LoginForm />
+        {/* <LoginForm /> */}
+        <Materials />
       </>
     );
   }

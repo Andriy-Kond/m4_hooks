@@ -6,7 +6,7 @@ import initialTodos from "./dataBase/todos.json";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import FilterTodo from "./components/FilterTodo";
-import Modal from "./components/Modal";
+import Modal from "Modal";
 
 import IconButton from "./components/IconButton";
 import { ReactComponent as IconSVG } from "./icons/add_icon.svg";
