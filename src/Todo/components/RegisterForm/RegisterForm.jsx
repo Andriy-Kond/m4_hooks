@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import {} from "./RegisterForm.styled";
-import shortid from "shortid";
+import { Component } from "react";
+import { nanoid } from "nanoid";
 
 const initialState = {
   email: "",
@@ -12,11 +11,12 @@ const initialState = {
   dog: false,
   turtle: false,
 };
+
 class RegisterForm extends Component {
   state = initialState;
 
-  emailInputId = shortid.generate();
-  passwordInputId = shortid.generate();
+  emailInputId = nanoid();
+  passwordInputId = nanoid();
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -46,14 +46,14 @@ class RegisterForm extends Component {
   render() {
     const { email, password, age, agreeProcessingData, cat, dog, turtle } =
       this.state;
-    // працюєю і так:
-    // const emailInputId = shortid.generate();
-    // const passwordInputId = shortid.generate();
-    const checkAgree = shortid.generate();
+    // працює і так:
+    // const emailInputId = nanoid();
+    // const passwordInputId = nanoid();
+    const checkAgree = nanoid();
 
-    const catIdChkBx = shortid.generate();
-    const dogIdChkBx = shortid.generate();
-    const turtleIdChkBx = shortid.generate();
+    const catIdChkBx = nanoid();
+    const dogIdChkBx = nanoid();
+    const turtleIdChkBx = nanoid();
 
     return (
       <form onSubmit={this.handleSubmitForm}>

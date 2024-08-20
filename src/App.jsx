@@ -2,8 +2,8 @@ import { GlobalStyle } from "GlobalStyle";
 
 // import ColorPicker from "ColorPicker";
 // import Pokemon from "Pokemon";
-// import Todo from "Todo";
-import Tabs from "Tabs";
+import Todo from "Todo";
+// import Tabs from "Tabs";
 // import Clock from "Clock";
 // import LoginForm from "LoginForm";
 // import Materials from "Materials";
@@ -17,8 +17,8 @@ function App() {
 
       {/* <ColorPicker /> */}
       {/* <Pokemon /> */}
-      {/* <Todo /> */}
-      <Tabs />
+      <Todo />
+      {/* <Tabs /> */}
       {/* <Clock /> */}
       {/* <LoginForm /> */}
       {/* <Materials /> */}

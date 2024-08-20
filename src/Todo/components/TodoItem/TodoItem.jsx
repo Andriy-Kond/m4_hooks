@@ -1,4 +1,3 @@
-import React from "react";
 import { ItemText } from "./TodoItem.styled";
 
 const Todo = ({ completed, text, onToggleCompleted, onDeleteTodo, id }) => {

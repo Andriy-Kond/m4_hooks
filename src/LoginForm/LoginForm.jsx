@@ -28,21 +28,21 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { object, string } from "yup";
 import { Input } from "./LoginForm.styled";
 
-const initialValues = { login: "", password: "", color: "" };
-
-const schema = object({
-  login: string().required(),
-  password: string().min(6).max(16).required(),
-});
-
-const handleSubmit = (values, actions) => {
-  console.log("handleSubmit >> actions:::", actions);
-  console.log("handleSubmit >> values:::", values);
-
-  actions.resetForm();
-};
-
 const LoginForm = () => {
+  const initialValues = { login: "", password: "", color: "" };
+
+  const schema = object({
+    login: string().required(),
+    password: string().min(6).max(16).required(),
+  });
+
+  const handleSubmit = (values, actions) => {
+    console.log("handleSubmit >> actions:::", actions);
+    console.log("handleSubmit >> values:::", values);
+
+    actions.resetForm();
+  };
+
   return (
     <Formik
       initialValues={initialValues}

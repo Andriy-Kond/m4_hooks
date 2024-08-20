@@ -1,29 +1,22 @@
-import React, { Component } from "react";
+import { useState } from "react";
 
-class AddTodo extends Component {
-  state = {
-    message: "",
-  };
+function AddTodo({ onAddTodo }) {
+  const [message, setMessage] = useState("");
 
-  handleChange = e => {
-    this.setState({ message: e.currentTarget.value });
-  };
+  const handleChange = e => setMessage(e.currentTarget.value);
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    this.props.onAddTodo(this.state.message);
-    this.setState({ message: "" });
+    onAddTodo(message);
+    setMessage("");
   };
 
-  render() {
-    const { message } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea value={message} onChange={this.handleChange} />
-        <button type="submit">Add task</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <textarea value={message} onChange={handleChange} />
+      <button type="submit">Add task</button>
+    </form>
+  );
 }
 
 export default AddTodo;
