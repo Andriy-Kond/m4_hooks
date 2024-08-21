@@ -6,8 +6,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import Tabs from "Tabs";
 // import Clock from "Clock";
 // import LoginForm from "LoginForm";
-import Materials from "Materials";
-// import Publications from "Publications";
+// import Materials from "Materials";
+import Publications from "Publications";
 // import VideoPlayer from "VideoPlayer";
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
       {/* <Tabs /> */}
       {/* <Clock /> */}
       {/* <LoginForm /> */}
-      <Materials />
-      {/* <Publications /> */}
+      {/* <Materials /> */}
+      <Publications />
       {/* <VideoPlayer /> */}
     </>
   );
