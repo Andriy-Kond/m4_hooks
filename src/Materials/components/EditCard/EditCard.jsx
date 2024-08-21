@@ -1,11 +1,8 @@
 import Modal from "Modal";
 import { Formik, Field, Form } from "formik";
-import { Component } from "react";
 
-class EditCard extends Component {
-  submitEdit = (values, actions) => {
-    const { toggleModal, updateMaterial, material } = this.props;
-
+function EditCard({ toggleModal, updateMaterial, material }) {
+  const submitEdit = (values, actions) => {
     updateMaterial({
       ...material,
       link: values.link,
@@ -15,29 +12,24 @@ class EditCard extends Component {
     toggleModal();
   };
 
-  render() {
-    const { toggleModal } = this.props;
-    return (
-      <Modal toggleModal={toggleModal}>
-        <h3>Редагування</h3>
-        <Formik
-          initialValues={{ title: "", link: "" }}
-          onSubmit={this.submitEdit}>
-          <Form>
-            <label>
-              <Field type="text" name="title" placeholder="Title" />
-            </label>
+  return (
+    <Modal toggleModal={toggleModal}>
+      <h3>Редагування</h3>
+      <Formik initialValues={{ title: "", link: "" }} onSubmit={submitEdit}>
+        <Form>
+          <label>
+            <Field type="text" name="title" placeholder="Title" />
+          </label>
 
-            <label>
-              <Field type="text" name="link" placeholder="Link" />
-            </label>
+          <label>
+            <Field type="text" name="link" placeholder="Link" />
+          </label>
 
-            <button type="submit">Edit Material</button>
-          </Form>
-        </Formik>
-      </Modal>
-    );
-  }
+          <button type="submit">Edit Material</button>
+        </Form>
+      </Formik>
+    </Modal>
+  );
 }
 
 export default EditCard;

@@ -1,87 +1,87 @@
-import React, { Component } from "react";
+import { useEffect, useState } from "react";
 import MaterialsForm from "./components/MaterialsForm";
 import materialsAPI from "./services/materialsAPI";
 import MaterialsList from "./components/MaterialsList";
 
-class Materials extends Component {
-  state = { materials: [], isLoading: false, error: null };
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
-  componentDidMount = async () => {
-    this.setState({ isLoading: true });
-    try {
-      const allMaterials = await materialsAPI.getMaterialsList();
-      this.setState({ materials: allMaterials });
-    } catch (error) {
-      console.log("error componentDidMount :>> ", error);
-      this.setState({ error: error.message });
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  };
+function Materials() {
+  const [materials, setMaterials] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // componentDidUpdate(prevProps, prevState) {}
+  useEffect(() => {
+    const fetchMaterials = async () => {
+      setIsLoading(true);
+      try {
+        const allMaterials = await materialsAPI.getMaterialsList();
+        setMaterials(allMaterials);
+      } catch (error) {
+        setError(error.message);
+        Notify.failure(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  addMaterial = async values => {
+    fetchMaterials();
+  }, []);
+
+  const addMaterial = async values => {
     // this.setState({ isLoading: true });
     try {
       const newMaterial = await materialsAPI.postMaterial(values);
-      this.setState(prevState => ({
-        materials: [...prevState.materials, newMaterial],
-      }));
+      setMaterials([newMaterial, ...materials]);
     } catch (error) {
-      console.log("error addMaterial :>> ", error);
-      this.setState({ error: error.message });
+      setError(error.message);
+      Notify.failure(error.message);
     } finally {
       // this.setState({ isLoading: false });
     }
   };
 
-  deleteMaterial = async id => {
+  const deleteMaterial = async id => {
     try {
       await materialsAPI.deleteMaterial(id);
-      this.setState(prevState => {
-        return {
-          materials: prevState.materials.filter(material => material.id !== id),
-        };
-      });
+      setMaterials(materials.filter(material => material.id !== id));
     } catch (error) {
-      this.setState({ error: error.message });
+      setError(error.message);
+      Notify.failure(error.message);
     }
   };
 
-  updateMaterial = async materialFields => {
-    await materialsAPI.updateMaterial(materialFields);
-    this.setState(prevProps => {
-      return {
-        materials: prevProps.materials.map(material => {
-          return material.id === materialFields.id ? materialFields : material;
-        }),
-      };
-    });
+  const updateMaterial = async materialFields => {
+    try {
+      await materialsAPI.updateMaterial(materialFields);
+      setMaterials(
+        materials.map(material =>
+          material.id === materialFields.id ? materialFields : material,
+        ),
+      );
+    } catch (error) {
+      setError(error.message);
+      Notify.failure(error.message);
+    }
   };
 
-  render() {
-    const { isLoading, materials, error } = this.state;
+  return (
+    <div>
+      <MaterialsForm onSubmit={addMaterial} isLoading={isLoading} />
 
-    return (
-      <div>
-        <MaterialsForm onSubmit={this.addMaterial} isLoading={isLoading} />
+      {isLoading ? (
+        // <p>Завантажую</p>
+        "LOADING"
+      ) : (
+        <MaterialsList
+          materials={materials}
+          deleteMaterial={deleteMaterial}
+          updateMaterial={updateMaterial}
+        />
+      )}
 
-        {isLoading ? (
-          // <p>Завантажую</p>
-          "LOADING"
-        ) : (
-          <MaterialsList
-            materials={materials}
-            deleteMaterial={this.deleteMaterial}
-            updateMaterial={this.updateMaterial}
-          />
-        )}
-
-        {error && <p>От халепа! Сервер повідомив про цю помилку: {error}</p>}
-      </div>
-    );
-  }
+      {error && <p>От халепа! Сервер повідомив про цю помилку: {error}</p>}
+    </div>
+  );
 }
 
 export default Materials;

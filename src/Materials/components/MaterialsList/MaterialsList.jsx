@@ -1,5 +1,3 @@
-// import MaterialCard from "./components/MaterialCard";
-
 import MaterialCard from "../MaterialCard";
 
 const MaterialsList = ({ materials, ...transitProps }) => {
@@ -10,7 +8,7 @@ const MaterialsList = ({ materials, ...transitProps }) => {
   return (
     <ul>
       {materials.map(material => {
-        const { id, title, link } = material;
+        const { id } = material;
 
         return (
           <li key={id}>

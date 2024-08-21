@@ -1,4 +1,4 @@
-import { Component, useReducer, useState } from "react";
+import { useReducer } from "react";
 import { nanoid } from "nanoid";
 
 const initialState = {
