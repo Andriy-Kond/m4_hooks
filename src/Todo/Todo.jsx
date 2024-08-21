@@ -67,9 +67,7 @@ function Todo() {
     setIsOpenModal(!isOpenModal);
   };
 
-  const handleSubmit = () => {
-    console.log("submit");
-  };
+  const submitForm = todoData => console.log("todoData :>> ", todoData);
 
   const completedTodoCount = getCompletedTodoCount();
   const visibleTodos = getVisibleTodos();
@@ -77,7 +75,7 @@ function Todo() {
 
   return (
     <>
-      <RegisterForm handleSubmit={handleSubmit} />
+      <RegisterForm handleSubmit={submitForm} />
       <p>Всього завдань: {totalTodosCount}</p>
       <p>Виконаних завдань: {completedTodoCount}</p>
       <TodoList
