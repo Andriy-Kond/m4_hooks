@@ -1,4 +1,4 @@
-import { SelectVideoWindow } from "./SelectVideoWindow/SelectVideoWindow";
+import SelectVideoWindow from "./SelectVideoWindow/SelectVideoWindow";
 
 function VideoPlayer() {
   return (

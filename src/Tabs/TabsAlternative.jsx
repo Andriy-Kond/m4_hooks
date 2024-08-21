@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 
 // у PureComponent вже вбудовано поверхневе порівняння наступного і поточного стейтів, тому shouldComponentUpdate не потрібен. Але порівняння поверхневе, тому важливо не мутувати масиви/об'єкти. Тобто треба створювати кожен раз новий масив/об'єкт. Інакше порівняння (по посиланню) поверне що вони однакові і перерендер не відбудеться.
 class Tabs extends PureComponent {

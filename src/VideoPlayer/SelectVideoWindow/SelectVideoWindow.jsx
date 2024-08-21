@@ -1,25 +1,23 @@
-import { Component } from "react";
+import { useState } from "react";
 
 import videos from "../dataBase/videos.json";
 import VideoList from "../VideoList";
 import Player from "../Player";
 
-export class SelectVideoWindow extends Component {
-  state = {
-    selectedVideo: null,
+function SelectVideoWindow() {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const selectVideo = link => {
+    setSelectedVideo(link);
   };
 
-  selectVideo = link => {
-    this.setState({ selectedVideo: link });
-  };
-
-  render() {
-    return (
-      <div style={{ padding: 24 }}>
-        <h1>Selected video: {this.state.selectedVideo}</h1>
-        <VideoList videos={videos} onSelect={this.selectVideo} />
-        <Player url={this.state.selectedVideo} />
-      </div>
-    );
-  }
+  return (
+    <div style={{ padding: 24 }}>
+      <h1>Selected video: {selectedVideo}</h1>
+      <VideoList videos={videos} onSelect={selectVideo} />
+      <Player url={selectedVideo} />
+    </div>
+  );
 }
+
+export default SelectVideoWindow;

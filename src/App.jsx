@@ -7,8 +7,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import Clock from "Clock";
 // import LoginForm from "LoginForm";
 // import Materials from "Materials";
-import Publications from "Publications";
-// import VideoPlayer from "VideoPlayer";
+// import Publications from "Publications";
+import VideoPlayer from "VideoPlayer";
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
       {/* <Clock /> */}
       {/* <LoginForm /> */}
       {/* <Materials /> */}
-      <Publications />
-      {/* <VideoPlayer /> */}
+      {/* <Publications /> */}
+      <VideoPlayer />
     </>
   );
 }

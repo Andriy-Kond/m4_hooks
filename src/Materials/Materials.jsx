@@ -28,7 +28,7 @@ function Materials() {
   }, []);
 
   const addMaterial = async values => {
-    // this.setState({ isLoading: true });
+    // setIsLoading(true);
     try {
       const newMaterial = await materialsAPI.postMaterial(values);
       setMaterials([newMaterial, ...materials]);
@@ -36,7 +36,7 @@ function Materials() {
       setError(error.message);
       Notify.failure(error.message);
     } finally {
-      // this.setState({ isLoading: false });
+      // setIsLoading(false);
     }
   };
 
