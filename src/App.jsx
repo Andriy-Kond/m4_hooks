@@ -13,7 +13,7 @@ import VideoPlayer from "VideoPlayer";
 function App() {
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle />
       <br />
       <hr />
       <hr />
@@ -24,9 +24,9 @@ function App() {
       <Pokemon />
       <br />
       <hr />
-      <hr />
+      <hr /> */}
       <Todo />
-      <br />
+      {/* <br />
       <hr />
       <hr />
       <Tabs />
@@ -49,7 +49,7 @@ function App() {
       <br />
       <hr />
       <hr />
-      <VideoPlayer />
+      <VideoPlayer /> */}
     </>
   );
 }

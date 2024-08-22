@@ -13,7 +13,7 @@ function AddTodo({ onAddTodo }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <textarea value={message} onChange={handleChange} />
+      <textarea value={message} onChange={handleChange} autoFocus />
       <button type="submit">Add task</button>
     </form>
   );

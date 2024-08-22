@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nanoid } from "nanoid";
 
 // import initialTodos from "./dataBase/todos.json";
@@ -17,15 +17,24 @@ function Todo() {
   const [filter, setFilter] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  const filterInputRef = useRef(null); // ref для інпуту, щоб при закритті модального вікна курсор становився у поле для фільтруванні
+
+  // фокус інпуту після закриття модального вікна:
   useEffect(() => {
-    const todos = localStorage.getItem("todos");
+    if (!isOpenModal && filterInputRef.current) {
+      filterInputRef.current.focus();
+    }
+  }, [isOpenModal]);
+
+  useEffect(() => {
+    const todos = window.localStorage.getItem("todos");
     const parsedTodos = JSON.parse(todos);
     parsedTodos && setTodos(parsedTodos);
   }, []);
 
   useEffect(() => {
     if (todos.length > 0) {
-      localStorage.setItem("todos", JSON.stringify(todos));
+      window.localStorage.setItem("todos", JSON.stringify(todos));
     }
   }, [todos]);
 
@@ -75,7 +84,9 @@ function Todo() {
 
   return (
     <>
-      <RegisterForm handleSubmit={submitForm} />
+      {/* <RegisterForm handleSubmit={submitForm} /> */}
+      <br />
+      <hr />
       <p>Всього завдань: {totalTodosCount}</p>
       <p>Виконаних завдань: {completedTodoCount}</p>
       <TodoList
@@ -92,7 +103,11 @@ function Todo() {
           <AddTodo onAddTodo={addTask} />
         </Modal>
       )}
-      <FilterTodo onChange={changeFilter} value={filter} />
+      <FilterTodo
+        onChange={changeFilter}
+        value={filter}
+        inputRef={filterInputRef} // для фокусування інпуту після закриття модального вікна
+      />
     </>
   );
 }
