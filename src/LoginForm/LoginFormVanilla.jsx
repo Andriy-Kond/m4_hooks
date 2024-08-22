@@ -1,5 +1,5 @@
 // * Підхід для заміни контрольованої форми: дати імена інпутам і зібрати elements:
-const LoginForm = () => {
+const LoginFormVanilla = () => {
   const handleSubmit = e => {
     e.preventDefault();
     // console.log(e.target.elements.login.value);
@@ -7,7 +7,7 @@ const LoginForm = () => {
     // а далі передати value куди треба:
     console.log(login.value, password.value);
 
-    // Або можна зібрати elements в масив і звідти повитягувати value (але лише не обчислювані? тобто не числа?). Мабуть якось так:
+    // Або можна зібрати elements в масив і звідти повитягувати value (але "лише не обчислювані"... тобто не числа?). Мабуть якось так:
     const elements = [...e.target.elements];
     const filteredElements = elements.filter(
       element => element.nodeName === "INPUT",
@@ -34,4 +34,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginFormVanilla;
