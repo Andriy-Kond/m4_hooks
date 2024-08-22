@@ -12,10 +12,6 @@ function ColorPicker() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [colors] = useState(colorsBase());
 
-  const handleClick = index => {
-    setActiveIndex(index !== activeIndex ? index : null);
-  };
-
   const activeColor = activeIndex ? colors[activeIndex].hex : "жоден";
 
   return (
@@ -32,7 +28,9 @@ function ColorPicker() {
           return (
             <ColorButton
               type="button"
-              onClick={() => handleClick(index)}
+              onClick={() =>
+                setActiveIndex(index !== activeIndex ? index : null)
+              }
               isActive={isActive}
               key={hex}
               hexColor={hex}
