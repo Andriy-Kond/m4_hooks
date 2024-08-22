@@ -1,32 +1,8 @@
-// const LoginForm = () => {
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     const { login, password } = e.target.elements;
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label>
-//         Login
-//         <input type="text" name="login" />
-//       </label>
-
-//       <label>
-//         Password
-//         <input type="password" name="password" autoComplete="new-password" />
-//       </label>
-
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
-
-// export default LoginForm;
-
 // * use Formik
 import { Formik, Form, ErrorMessage } from "formik";
 import { object, string } from "yup";
 import { Input } from "./LoginForm.styled";
+import { useState } from "react";
 
 const LoginForm = () => {
   const initialValues = { login: "", password: "", color: "" };
@@ -79,3 +55,50 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+const LoginFormStandard = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = e => {
+    const { name, value } = e.current;
+    switch (name) {
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { login, password } = e.target.elements;
+    console.log(login.value, password.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Login
+        <input type="text" name="login" value={email} onChange={handleChange} />
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          name="password"
+          value={password}
+          autoComplete="new-password"
+          onChange={handleChange}
+        />
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
