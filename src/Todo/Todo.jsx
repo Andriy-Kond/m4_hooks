@@ -13,7 +13,17 @@ import IconButton from "./components/IconButton";
 import RegisterForm from "./components/RegisterForm";
 
 function Todo() {
-  const [todos, setTodos] = useState([]);
+  // У початковий стан записую розпарсений localStorage:
+  const [todos, setTodos] = useState(
+    JSON.parse(window.localStorage.getItem("todos")) ?? [],
+  );
+  // Інакше довелось би робити додатковий useEffect:
+  // useEffect(() => {
+  //   const todos = window.localStorage.getItem("todos");
+  //   const parsedTodos = JSON.parse(todos);
+  //   parsedTodos && setTodos(parsedTodos);
+  // }, []);
+
   const [filter, setFilter] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -25,12 +35,6 @@ function Todo() {
       filterInputRef.current.focus();
     }
   }, [isOpenModal]);
-
-  useEffect(() => {
-    const todos = window.localStorage.getItem("todos");
-    const parsedTodos = JSON.parse(todos);
-    parsedTodos && setTodos(parsedTodos);
-  }, []);
 
   useEffect(() => {
     if (todos.length > 0) {
