@@ -15,50 +15,17 @@ import Counter from "Counter";
 function App() {
   return (
     <>
-      {/* <GlobalStyle />
-      <br />
-      <hr />
-      <hr />
-      <SignupForm />
-      <br />
-      <hr />
-      <hr />
+      <GlobalStyle />
+      {/* <SignupForm /> */}
       <Counter />
-      <br />
-      <hr />
-      <hr />
-      <ColorPicker />
-      <br />
-      <hr />
-      <hr />
-      <Pokemon /> */}
-      <br />
-      <hr />
-      <hr />
+      {/* <ColorPicker />
+      <Pokemon />
       <Todo />
-      <br />
-      <hr />
-      <hr />
-      {/* <Tabs /> */}
-      <br />
-      <hr />
-      <hr />
-      {/* <Clock />
-      <br />
-      <hr />
-      <hr />
+      <Tabs />
+      <Clock />
       <LoginForm />
-      <br />
-      <hr />
-      <hr />
       <Materials />
-      <br />
-      <hr />
-      <hr />
       <Publications />
-      <br />
-      <hr />
-      <hr />
       <VideoPlayer /> */}
     </>
   );

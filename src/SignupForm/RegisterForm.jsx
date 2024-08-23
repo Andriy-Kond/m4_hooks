@@ -28,7 +28,7 @@ function reducer(state, action) {
   }
 }
 
-function RegisterForm({ handleSubmit }) {
+function RegisterForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleChange = e => {
@@ -47,7 +47,7 @@ function RegisterForm({ handleSubmit }) {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    handleSubmit(state);
+    console.log("state :>> ", state);
     resetForm();
   };
 
