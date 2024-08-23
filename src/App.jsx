@@ -9,6 +9,8 @@ import LoginForm from "LoginForm";
 import Materials from "Materials";
 import Publications from "Publications";
 import VideoPlayer from "VideoPlayer";
+import SignupForm from "SignupForm";
+import Counter from "Counter";
 
 function App() {
   return (
@@ -17,23 +19,31 @@ function App() {
       <br />
       <hr />
       <hr />
+      <SignupForm />
+      <br />
+      <hr />
+      <hr />
+      <Counter />
+      <br />
+      <hr />
+      <hr />
       <ColorPicker />
       <br />
       <hr />
       <hr />
-      <Pokemon />
+      <Pokemon /> */}
       <br />
       <hr />
-      <hr /> */}
+      <hr />
       <Todo />
-      {/* <br />
-      <hr />
-      <hr />
-      <Tabs />
       <br />
       <hr />
       <hr />
-      <Clock />
+      {/* <Tabs /> */}
+      <br />
+      <hr />
+      <hr />
+      {/* <Clock />
       <br />
       <hr />
       <hr />

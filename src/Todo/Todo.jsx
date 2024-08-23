@@ -10,19 +10,22 @@ import AddTodo from "./components/AddTodo";
 import FilterTodo from "./components/FilterTodo";
 import IconButton from "./components/IconButton";
 
-import RegisterForm from "./components/RegisterForm";
+import RegisterForm from "../SignupForm/RegisterForm";
+import { ImClearFormatting } from "react-icons/im";
 
 function Todo() {
   // У початковий стан записую розпарсений localStorage:
   const [todos, setTodos] = useState(
-    JSON.parse(window.localStorage.getItem("todos")) ?? [],
+    // Якщо не зробити ледачу ініціалізацію стану (тобто просто передати туди перевірку "локал сторидж чи пустий масив"), то useState буде виконувати цю перевірку на кожному рендері. Якщо ж огорнути перевірку у функцію, то useState викличе її лише при першому рендері.
+    () => {
+      console.log(
+        "Робиться початковий стан для useState (ледача ініціалізація)",
+      );
+
+      const savedTodos = window.localStorage.getItem("todos");
+      return savedTodos ? JSON.parse(savedTodos) : [];
+    },
   );
-  // Інакше довелось би робити додатковий useEffect:
-  // useEffect(() => {
-  //   const todos = window.localStorage.getItem("todos");
-  //   const parsedTodos = JSON.parse(todos);
-  //   parsedTodos && setTodos(parsedTodos);
-  // }, []);
 
   const [filter, setFilter] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -37,9 +40,7 @@ function Todo() {
   }, [isOpenModal]);
 
   useEffect(() => {
-    if (todos.length > 0) {
-      window.localStorage.setItem("todos", JSON.stringify(todos));
-    }
+    window.localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const deleteTodo = todoId => {
