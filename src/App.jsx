@@ -16,8 +16,8 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <SignupForm /> */}
-      <Counter />
+      <SignupForm />
+      {/* <Counter /> */}
       {/* <ColorPicker />
       <Pokemon />
       <Todo />

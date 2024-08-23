@@ -10,9 +10,6 @@ import AddTodo from "./components/AddTodo";
 import FilterTodo from "./components/FilterTodo";
 import IconButton from "./components/IconButton";
 
-import RegisterForm from "../SignupForm/RegisterForm";
-import { ImClearFormatting } from "react-icons/im";
-
 function Todo() {
   // У початковий стан записую розпарсений localStorage:
   const [todos, setTodos] = useState(
@@ -89,7 +86,6 @@ function Todo() {
 
   return (
     <>
-      {/* <RegisterForm handleSubmit={submitForm} /> */}
       <br />
       <hr />
       <p>Всього завдань: {totalTodosCount}</p>
