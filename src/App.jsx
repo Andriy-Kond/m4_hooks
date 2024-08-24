@@ -1,5 +1,7 @@
 import { GlobalStyle } from "GlobalStyle";
 
+import AppBar from "AppBar";
+
 import ColorPicker from "ColorPicker";
 import Pokemon from "Pokemon";
 import Todo from "Todo";
@@ -15,13 +17,17 @@ import Counter from "Counter";
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <AppBar />
+      <Counter />
+
+      {/* <GlobalStyle />
       <SignupForm />
-      {/* <Counter /> */}
-      {/* <ColorPicker />
+      <ColorPicker />
       <Pokemon />
       <Todo />
       <Tabs />
+      <Clock />
+      <Clock />
       <Clock />
       <LoginForm />
       <Materials />

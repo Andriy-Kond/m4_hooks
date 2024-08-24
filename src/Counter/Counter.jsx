@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "./Counter.styled";
 
 function Counter() {
@@ -13,7 +13,26 @@ function Counter() {
     setCounterB(counterB => counterB + 1);
   };
 
+  // Патерн ігнорування першого рендеру (у Strict Mode не працює - перший рендер запускається два рази поспіль)
+  const isFirstRender = useRef(true);
+  // Тому для Strict Mode можна використати моніторинг другого рендеру
+  const isSecondRender = useRef(true);
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      console.log("перший рендер", isFirstRender);
+      return;
+    }
+
+    if (isSecondRender.current) {
+      isSecondRender.current = false;
+      console.log("другий рендер", isFirstRender);
+      return;
+    }
+
+    console.log("третій і усі наступні рендери", Date.now());
+
     const totalClicks = counterA + counterB;
     document.title = `Totally clicked ${totalClicks} times`;
   }, [counterA, counterB]);

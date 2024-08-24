@@ -25,7 +25,7 @@ function Clock() {
     <>
       {isOpenTimer && <div>{time}</div>}
       <button type="button" onClick={toggleTimer}>
-        Open/close Timer
+        Open/close Timer === Mount/Unmount Timer
       </button>
     </>
   );

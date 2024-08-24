@@ -1,20 +1,5 @@
-import { useEffect, useState } from "react";
 import { Form, Label } from "./SignupForm.styled";
-
-// Хук для позбуття повторів
-const useLocalStorage = (localStorageKey, defaultValue) => {
-  const [state, setState] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem(localStorageKey)) ?? defaultValue
-    );
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem(localStorageKey, JSON.stringify(state));
-  }, [localStorageKey, state]);
-
-  return [state, setState];
-};
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function SignupForm() {
   // const [email, setEmail] = useState(() => {
@@ -54,10 +39,19 @@ function SignupForm() {
     }
   };
 
-  const submitForm = () => {};
+  const submitForm = e => {
+    e.preventDefault();
+    console.log(email, password);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+  };
 
   return (
-    <Form autoComplete="off">
+    <Form onSubmit={submitForm} autoComplete="off">
       <Label>
         <span>Пошта</span>
         <input
@@ -78,9 +72,7 @@ function SignupForm() {
         />
       </Label>
 
-      <button type="submit" handleSubmit={submitForm}>
-        Зареєструватись
-      </button>
+      <button type="submit">Зареєструватись</button>
     </Form>
   );
 }
