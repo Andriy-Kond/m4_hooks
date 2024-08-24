@@ -1,2 +1,2 @@
-// export { default } from "./RegisterForm";
-export { default } from "./SignupForm";
+export { default } from "./RegisterForm";
+// export { default } from "./SignupForm";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { TfiSearch } from "react-icons/tfi";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
@@ -9,17 +9,20 @@ Notify.init({
 
 function PokemonForm({ onSubmit }) {
   const [pokemonName, setPokemonName] = useState("");
+  const pokemonInput = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (!pokemonName.trim()) {
       Notify.warning("Enter some pokemon name!");
+      pokemonInput?.current.focus();
       return;
     }
 
     onSubmit(pokemonName.trim());
     setPokemonName("");
+    pokemonInput?.current.focus();
   };
 
   const handleNameChange = e => {
@@ -33,6 +36,8 @@ function PokemonForm({ onSubmit }) {
         name="pokemonName"
         value={pokemonName}
         onChange={handleNameChange}
+        autoFocus
+        ref={pokemonInput}
       />
       <button
         type="submit"

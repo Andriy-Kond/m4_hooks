@@ -11,7 +11,7 @@ function PokemonDataView({ pokemon: { name, sprites, stats } }) {
       <h3>Stats:</h3>
       <ul>
         {stats.map(entry => {
-          console.log("PokemonDataView >> entry:::", entry);
+          // console.log("PokemonDataView >> entry:::", entry);
           return (
             <li key={entry.stat.name}>
               {entry.stat.name} : {entry.base_stat}

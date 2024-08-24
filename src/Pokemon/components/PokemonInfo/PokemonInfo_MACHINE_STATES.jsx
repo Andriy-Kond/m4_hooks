@@ -30,14 +30,15 @@ function PokemonInfo({ pokemonName, setPokemonName }) {
     setTimeout(async () => {
       try {
         const pokemon = await fetchPokemon(pokemonName, URL);
-        setStatus(machineStatus.RESOLVED);
         setPokemon(pokemon);
+        setStatus(machineStatus.RESOLVED);
         Notify.success(`${pokemon.name} was found`);
       } catch (error) {
-        setStatus(machineStatus.REJECTED);
         setError(error);
+        setStatus(machineStatus.REJECTED);
         Notify.failure(error.message);
       } finally {
+        // Скидаю, бо інакше не працює новий запит з тим самим ім'ям, бо в стейті зберігається те саме ім'я, тобто він "не змінюється", і новий запит і перерендер не відбувається.
         setPokemonName("");
       }
     }, 500);

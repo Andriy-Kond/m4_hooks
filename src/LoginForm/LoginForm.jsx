@@ -4,6 +4,7 @@ import { object, string } from "yup";
 import { Input } from "./LoginForm.styled";
 import { useState } from "react";
 
+// ==================== Formik library ================
 const LoginForm = () => {
   const initialValues = { login: "", password: "", color: "" };
 
@@ -54,46 +55,47 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
-
+// ==================== Standard pattern ================
 const LoginFormStandard = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleChange = e => {
-    const { name, value } = e.current;
+    console.log("handleChange >> e.current:::", e.target);
+    const { name, value } = e.target;
+
     switch (name) {
       case "email":
-        setEmail(value);
-        break;
+        return setEmail(value);
+
       case "password":
-        setPassword(value);
-        break;
+        return setPassword(value);
+
       default:
-        break;
+        throw new Error(`Unsupported name ${name}`);
     }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { login, password } = e.target.elements;
-    console.log(login.value, password.value);
+    const { email, password } = e.target.elements;
+    console.log(email.value, password.value);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Login
-        <input type="text" name="login" value={email} onChange={handleChange} />
+        Login standard
+        <input type="text" name="email" value={email} onChange={handleChange} />
       </label>
 
       <label>
-        Password
+        Password standard
         <input
           type="password"
           name="password"
           value={password}
-          autoComplete="new-password"
+          // autoComplete="new-password"
           onChange={handleChange}
         />
       </label>
@@ -102,3 +104,5 @@ const LoginFormStandard = () => {
     </form>
   );
 };
+
+export default LoginForm;

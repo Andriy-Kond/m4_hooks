@@ -13,26 +13,30 @@ import Publications from "Publications";
 import VideoPlayer from "VideoPlayer";
 import SignupForm from "SignupForm";
 import Counter from "Counter";
+import Memoization from "Memoization";
 
 function App() {
   return (
     <>
-      <AppBar />
-      <Counter />
+      <GlobalStyle />
 
-      {/* <GlobalStyle />
-      <SignupForm />
+      {/* <SignupForm /> */}
+      {/* <AppBar /> */}
+      {/* <Pokemon /> */}
+      {/*  
+      <LoginForm />
+      <Counter />
       <ColorPicker />
-      <Pokemon />
       <Todo />
       <Tabs />
       <Clock />
       <Clock />
       <Clock />
-      <LoginForm />
       <Materials />
       <Publications />
-      <VideoPlayer /> */}
+    <VideoPlayer /> */}
+
+      <Memoization />
     </>
   );
 }

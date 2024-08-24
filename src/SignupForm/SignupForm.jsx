@@ -27,15 +27,13 @@ function SignupForm() {
 
     switch (name) {
       case "email":
-        setEmail(value);
-        break;
+        return setEmail(value);
 
       case "password":
-        setPassword(value);
-        break;
+        return setPassword(value);
 
       default:
-        return;
+        throw new Error(`Unsupported name ${name}`);
     }
   };
 
@@ -51,7 +49,7 @@ function SignupForm() {
   };
 
   return (
-    <Form onSubmit={submitForm} autoComplete="off">
+    <Form onSubmit={submitForm} autoComplete="on">
       <Label>
         <span>Пошта</span>
         <input

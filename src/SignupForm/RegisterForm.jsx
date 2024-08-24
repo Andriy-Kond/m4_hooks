@@ -10,6 +10,7 @@ const initialState = {
   cat: false,
   dog: false,
   turtle: false,
+  count: 0,
 };
 
 function reducer(state, action) {
@@ -24,12 +25,18 @@ function reducer(state, action) {
       return initialState;
 
     default:
-      return state;
+      throw new Error(`Unsupported action type ${action.type}`);
   }
 }
 
+function init(state) {
+  // У state передається значення, що було передано у useReducer другим параметром (initialState)
+  return { ...state, count: state.count + 100 }; // Наприклад, для витягування при першому рендері значення з Local Storage
+  // Тобто це заміна ледачої ініціалізації у useState - const [state, setState] = useState(() => {це ледача ініціалізація});
+}
+
 function RegisterForm() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
