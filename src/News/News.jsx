@@ -1,3 +1,4 @@
+import { Component } from "react";
 import axios from "axios";
 import NewsSearchForm from "./NewsSearchForm";
 
@@ -16,7 +17,7 @@ const APIfetchArticles = async ({
     .then(response => response.data.articles);
 };
 
-class NewsOld extends Component {
+class News extends Component {
   state = {
     articles: [],
     currentPage: 1,
