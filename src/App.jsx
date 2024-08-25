@@ -14,15 +14,17 @@ import VideoPlayer from "VideoPlayer";
 import SignupForm from "SignupForm";
 import Counter from "Counter";
 import Memoization from "Memoization";
+import News from "News";
 
 function App() {
   return (
     <>
       <GlobalStyle />
 
+      {/* <Clock />
       <Clock />
-      <Clock />
-      <Clock />
+      <Clock /> */}
+      <News />
       {/* <SignupForm /> */}
       {/* <AppBar /> */}
       {/* <Pokemon /> */}
