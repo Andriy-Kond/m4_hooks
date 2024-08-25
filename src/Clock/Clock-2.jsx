@@ -7,36 +7,39 @@ function Clock() {
 
   const intervalId = useRef(null);
 
-  // useEffect(() => {
-  //   intervalId.current = setInterval(() => {
-  //     setTime(new Date().toLocaleTimeString());
-  //   }, 1000);
+  useEffect(() => {
+    isOpenTimer &&
+      (intervalId.current = setInterval(() => {
+        setTime(new Date().toLocaleTimeString());
+      }, 1000));
 
-  //   return () => {
-  //     // clearInterval(intervalId.current);
-  //     stopTimer();
-  //   };
-  // }, []);
+    return () => {
+      // clearInterval(intervalId.current);
+      stopTimer();
+    };
+  }, [isOpenTimer]);
 
   const toggleTimer = () => setIsOpenTimer(!isOpenTimer);
 
-  const startTimer = () => {
-    intervalId.current = setInterval(() => {
-      setTime(new Date().toLocaleTimeString());
-    }, 1000);
-  };
+  // const startTimer = () => {
+  //   intervalId.current = setInterval(() => {
+  //     setTime(new Date().toLocaleTimeString());
+  //   }, 1000);
+  // };
 
   const stopTimer = () => clearInterval(intervalId.current);
+
+  console.log("Clock >> intervalId.current:::", intervalId.current);
 
   return (
     <>
       {isOpenTimer && <div>{time}</div>}
       <button type="button" onClick={toggleTimer}>
-        Mount/Unmount Timer
+        Show/Hide Timer
       </button>
-      <button type="button" onClick={startTimer}>
+      {/* <button type="button" onClick={startTimer}>
         Start timer
-      </button>
+      </button> */}
       <button type="button" onClick={stopTimer}>
         Stop timer
       </button>

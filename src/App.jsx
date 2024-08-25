@@ -20,6 +20,9 @@ function App() {
     <>
       <GlobalStyle />
 
+      <Clock />
+      <Clock />
+      <Clock />
       {/* <SignupForm /> */}
       {/* <AppBar /> */}
       {/* <Pokemon /> */}
@@ -29,14 +32,11 @@ function App() {
       <ColorPicker />
       <Todo />
       <Tabs />
-      <Clock />
-      <Clock />
-      <Clock />
       <Materials />
       <Publications />
-    <VideoPlayer /> */}
-
+      <VideoPlayer /> 
       <Memoization />
+    */}
     </>
   );
 }
