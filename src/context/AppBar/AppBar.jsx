@@ -1,18 +1,18 @@
-import Navigation from "Navigation";
-import UserMenu from "UserMenu";
-import authContext from "context/auth/context";
 import { useContext } from "react";
+import authContext from "context/auth/context";
+
+import Navigation from "context/Navigation";
+import UserMenu from "context/UserMenu";
 
 // З хуком useContext:
 
 function AppBar() {
-  const ctx = useContext(authContext);
-  const { user, isLoggedIn, onLogIn, onLogOut } = ctx;
+  const { user, isLoggedIn, onLogIn, onLogOut } = useContext(authContext);
 
   return (
     <header>
       <Navigation />
-      <UserMenu />
+
       {isLoggedIn ? (
         <UserMenu onLogOut={onLogOut} user={user} />
       ) : (

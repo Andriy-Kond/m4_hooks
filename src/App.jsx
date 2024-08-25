@@ -1,6 +1,6 @@
 import { GlobalStyle } from "GlobalStyle";
 
-import AppBar from "AppBar";
+import AppBar from "context/AppBar";
 
 import ColorPicker from "ColorPicker";
 import Pokemon from "Pokemon";
@@ -20,13 +20,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <AppBar />
 
       {/* <Clock />
       <Clock />
       <Clock /> */}
-      <News />
+      {/* <News /> */}
       {/* <SignupForm /> */}
-      {/* <AppBar /> */}
       {/* <Pokemon /> */}
       {/*  
       <LoginForm />
