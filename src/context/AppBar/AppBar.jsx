@@ -7,14 +7,14 @@ import UserMenu from "context/UserMenu";
 // З хуком useContext:
 
 function AppBar() {
-  const { user, isLoggedIn, onLogIn, onLogOut } = useContext(authContext);
+  const { isLoggedIn, onLogIn } = useContext(authContext);
 
   return (
     <header>
       <Navigation />
 
       {isLoggedIn ? (
-        <UserMenu onLogOut={onLogOut} user={user} />
+        <UserMenu />
       ) : (
         <button type="button" onClick={onLogIn}>
           Login
