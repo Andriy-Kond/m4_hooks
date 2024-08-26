@@ -21,24 +21,36 @@ function App() {
     <>
       <GlobalStyle />
       <AppBar />
-
-      {/* <Clock />
+      <hr />
       <Clock />
-      <Clock /> */}
-      {/* <News /> */}
-      {/* <SignupForm /> */}
-      {/* <Pokemon /> */}
-      {/*  
+      <Clock />
+      <Clock />
+      <hr />
+      <News />
+      <hr />
+      <SignupForm />
+      <hr />
+      <Pokemon />
+      <hr />
+
       <LoginForm />
+      <hr />
       <Counter />
+      <hr />
       <ColorPicker />
+      <hr />
       <Todo />
+      <hr />
       <Tabs />
+      <hr />
       <Materials />
+      <hr />
       <Publications />
-      <VideoPlayer /> 
+      <hr />
+      <VideoPlayer />
+      <hr />
       <Memoization />
-    */}
+      <hr />
     </>
   );
 }
