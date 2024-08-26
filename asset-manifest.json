@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/m4_hooks/static/js/main.d48133e0.js",
+    "main.js": "/m4_hooks/static/js/main.a32fef18.js",
     "reactPlayerYouTube.js": "/m4_hooks/static/js/reactPlayerYouTube.7a9af682.chunk.js",
     "reactPlayerSoundCloud.js": "/m4_hooks/static/js/reactPlayerSoundCloud.f15ab07c.chunk.js",
     "reactPlayerVimeo.js": "/m4_hooks/static/js/reactPlayerVimeo.201fc709.chunk.js",
     "reactPlayerMux.js": "/m4_hooks/static/js/reactPlayerMux.1b4673f4.chunk.js",
-    "reactPlayerFacebook.js": "/m4_hooks/static/js/reactPlayerFacebook.1dd02b30.chunk.js",
+    "reactPlayerFacebook.js": "/m4_hooks/static/js/reactPlayerFacebook.af31f73a.chunk.js",
     "reactPlayerStreamable.js": "/m4_hooks/static/js/reactPlayerStreamable.b3bd849c.chunk.js",
     "reactPlayerWistia.js": "/m4_hooks/static/js/reactPlayerWistia.848cbebf.chunk.js",
     "reactPlayerTwitch.js": "/m4_hooks/static/js/reactPlayerTwitch.52b594ea.chunk.js",
@@ -20,12 +20,12 @@
     "static/media/error.gif": "/m4_hooks/static/media/error.4d1f2add9a363db57ac6.gif",
     "static/media/add_icon.svg": "/m4_hooks/static/media/add_icon.f047906f0159253298f435ab6f284301.svg",
     "index.html": "/m4_hooks/index.html",
-    "main.d48133e0.js.map": "/m4_hooks/static/js/main.d48133e0.js.map",
+    "main.a32fef18.js.map": "/m4_hooks/static/js/main.a32fef18.js.map",
     "reactPlayerYouTube.7a9af682.chunk.js.map": "/m4_hooks/static/js/reactPlayerYouTube.7a9af682.chunk.js.map",
     "reactPlayerSoundCloud.f15ab07c.chunk.js.map": "/m4_hooks/static/js/reactPlayerSoundCloud.f15ab07c.chunk.js.map",
     "reactPlayerVimeo.201fc709.chunk.js.map": "/m4_hooks/static/js/reactPlayerVimeo.201fc709.chunk.js.map",
     "reactPlayerMux.1b4673f4.chunk.js.map": "/m4_hooks/static/js/reactPlayerMux.1b4673f4.chunk.js.map",
-    "reactPlayerFacebook.1dd02b30.chunk.js.map": "/m4_hooks/static/js/reactPlayerFacebook.1dd02b30.chunk.js.map",
+    "reactPlayerFacebook.af31f73a.chunk.js.map": "/m4_hooks/static/js/reactPlayerFacebook.af31f73a.chunk.js.map",
     "reactPlayerStreamable.b3bd849c.chunk.js.map": "/m4_hooks/static/js/reactPlayerStreamable.b3bd849c.chunk.js.map",
     "reactPlayerWistia.848cbebf.chunk.js.map": "/m4_hooks/static/js/reactPlayerWistia.848cbebf.chunk.js.map",
     "reactPlayerTwitch.52b594ea.chunk.js.map": "/m4_hooks/static/js/reactPlayerTwitch.52b594ea.chunk.js.map",
@@ -37,6 +37,6 @@
     "reactPlayerPreview.a7c3451b.chunk.js.map": "/m4_hooks/static/js/reactPlayerPreview.a7c3451b.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.d48133e0.js"
+    "static/js/main.a32fef18.js"
   ]
 }
