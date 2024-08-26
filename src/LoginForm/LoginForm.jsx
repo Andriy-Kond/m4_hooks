@@ -80,6 +80,7 @@ const LoginFormStandard = () => {
     e.preventDefault();
     const { email, password } = e.target.elements;
     console.log(email.value, password.value);
+    // e.currentTarget.reset()
   };
 
   return (

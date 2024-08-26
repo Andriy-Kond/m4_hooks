@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Backdrop, Button, ModalWindow } from "./Modal.styled";
 import { createPortal } from "react-dom";
 
+// Portal for modal:
 const modalPortal = document.querySelector("#root-modal");
 
 function Modal({ toggleModal, children }) {
@@ -30,7 +31,7 @@ function Modal({ toggleModal, children }) {
       </ModalWindow>
     </Backdrop>,
     modalPortal,
-    // або замість modalPortal так: document.querySelector("#root-modal"),
+    // або замість modalPortal можна викликати його прямо тут: document.querySelector("#root-modal"),
   );
 }
 
