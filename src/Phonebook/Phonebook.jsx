@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm";
 import Filter from "./Filter";
 import ContactList from "./ContactList";
 
-class App extends Component {
+class ImageFinder extends Component {
   state = {
     contacts: [
       // { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -79,4 +79,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ImageFinder;
