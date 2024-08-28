@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string, number } from "yup";
+
 import { Button, Span } from "./ContactForm.styled";
 
 const shema = object({
