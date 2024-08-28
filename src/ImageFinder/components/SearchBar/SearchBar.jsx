@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState } from "react";
 import { MdOutlineImageSearch } from "react-icons/md";
 
 import {
@@ -8,44 +8,38 @@ import {
   SearchFormInput,
 } from "./SearchBar.styled";
 
-class SearchBar extends Component {
-  state = {
-    query: "",
+function SearchBar({ onSetQuery }) {
+  const [query, setQuery] = useState("");
+
+  const changeQuery = e => {
+    setQuery(e.target.value);
   };
 
-  changeQuery = e => {
-    this.setState({ query: e.target.value });
-  };
-
-  onSubmit = e => {
+  const submitForm = e => {
     e.preventDefault();
-    this.props.onSetQuery(this.state.query);
-    this.setState({ query: "" });
+    onSetQuery(query);
+    setQuery("");
   };
 
-  render() {
-    const { query } = this.state;
-
-    return (
-      <Header>
-        <SearchForm onSubmit={this.onSubmit}>
-          <SearchFormInput
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            value={query}
-            onChange={this.changeQuery}
+  return (
+    <Header>
+      <SearchForm onSubmit={submitForm}>
+        <SearchFormInput
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          value={query}
+          onChange={changeQuery}
+        />
+        <SearchFormBtn type="submit">
+          <MdOutlineImageSearch
+            style={{ width: "100%", height: "100%", fill: "blue" }}
           />
-          <SearchFormBtn type="submit">
-            <MdOutlineImageSearch
-              style={{ width: "100%", height: "100%", fill: "blue" }}
-            />
-          </SearchFormBtn>
-        </SearchForm>
-      </Header>
-    );
-  }
+        </SearchFormBtn>
+      </SearchForm>
+    </Header>
+  );
 }
 
 export default SearchBar;

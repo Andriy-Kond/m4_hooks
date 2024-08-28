@@ -15,8 +15,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import Counter from "Counter";
 // import Memoization from "Memoization";
 // import News from "News";
-import Phonebook from "Phonebook";
-// import ImageFinder from "ImageFinder";
+// import Phonebook from "Phonebook";
+import ImageFinder from "ImageFinder";
 
 function App() {
   return (
@@ -54,9 +54,9 @@ function App() {
       <Memoization />
       <hr /> */}
 
-      <Phonebook />
+      {/* <Phonebook /> */}
 
-      {/* <ImageFinder/> */}
+      <ImageFinder />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 import { Container } from "./ImageFinder.styled";
@@ -14,127 +14,109 @@ Notify.init({
   cssAnimationStyle: "from-right",
 });
 
-class ImageFinder extends Component {
-  constructor(props) {
-    super(props);
-    this.loadMoreBtnRef = createRef(); // Додавання посилання на кнопку "Load More"
-  }
+function ImageFinder() {
+  const loadMoreBtnRef = createRef(); // Додавання посилання на кнопку "Load More"
+  const remainsItems = useRef(); // підрахунок зображень, що залишились за певним запитом
 
-  state = {
-    query: "",
-    imagesList: [],
-    totalHits: null,
-    page: 1,
-    isLoading: false,
-  };
+  const [query, setQuery] = useState("");
+  const [imagesList, setImagesList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
-  componentDidUpdate(prevProps, prevState) {
-    const { imagesList, isLoading } = this.state;
-
+  useEffect(() => {
     // Прокрутка вниз, якщо додані нові зображення, або показується loading
-    if (imagesList.length > prevState.imagesList.length || isLoading) {
-      if (this.loadMoreBtnRef.current) {
-        this.loadMoreBtnRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
+    loadMoreBtnRef.current &&
+      loadMoreBtnRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+  }, [imagesList, isLoading, loadMoreBtnRef]);
+
+  useEffect(() => {
+    if (query === "") {
+      // Зупинка виконання при першому рендері
+      return;
     }
-  }
+
+    const onSearchImage = async () => {
+      setIsLoading(true);
+
+      setTimeout(async () => {
+        try {
+          const result = await searchAPI.fetchImage(query, page);
+          updateStates(result);
+        } catch (error) {
+          Notify.failure(`Error: ${error.message}`);
+        } finally {
+          setIsLoading(false);
+        }
+      }, 300);
+    };
+
+    // Функція для оновлення стану за результатами запиту на сервер
+    const updateStates = ({ hits, totalHits }) => {
+      if (totalHits === 0) {
+        Notify.info(`Sorry we not found any images with this request`);
+        return;
+      }
+
+      if (page === 1) {
+        setImagesList([...hits]);
+
+        remainsItems.current = totalHits - hits.length;
+        Notify.success(`We found ${totalHits} images!`, { timeout: 2000 });
+      } else {
+        setImagesList(prevImagesList => [...prevImagesList, ...hits]);
+        remainsItems.current -= hits.length;
+      }
+
+      remainsItems.current === 0 &&
+        Notify.info(`It's all that we have by this request.`);
+    };
+
+    onSearchImage();
+  }, [page, query]);
 
   // Дії при кліку на кнопку Search (новий пошук)
-  searchBtn = async query => {
-    this.setState({ page: 1, imagesList: [], query }, () => {
-      this.onSearchImage(query);
-    });
+  const searchBtn = async query => {
+    if (query.trim() === "") {
+      Notify.info("Введіть хоч якийсь запит");
+      return;
+    }
+
+    // Для того щоб йшов новий запит навіть якщо він той самий, що і попередній, тобто повторюється (page === 1, query - the same):
+    setQuery("");
+
+    setTimeout(() => {
+      setPage(1);
+      setImagesList([]);
+      setQuery(query);
+    }, 0);
+    // Інакше треба вводити додатковий маркер, чи лічильник, чи замість useEffect викликати функцію onSearchImage при кліку і на searchBtn і на loadMoreBtn
   };
 
-  // Дії при кліку на кнопку Load More (додавання сторінки до існуючого пошуку)
-  loadMoreBtn = e => {
+  // Дії при кліку на кнопку Load More (додавання сторінки до чинного пошуку)
+  const loadMoreBtn = e => {
     e.target.blur(); // зняття фокусу з кнопки, щоб ховер знов працював.
 
-    this.setState(
-      prevState => ({ page: prevState.page + 1 }),
-      () => this.onSearchImage(this.state.query),
-    );
+    setPage(prevPage => prevPage + 1);
   };
 
-  onSearchImage = async query => {
-    this.setState({ isLoading: true });
+  return (
+    <Container>
+      <SearchBar onSetQuery={searchBtn} />
+      <ImageGalleryV1 imagesList={imagesList} />
 
-    setTimeout(async () => {
-      const result = await this.fetchImages(query);
-      this.updateState(result);
-    }, 300);
-  };
+      {isLoading && <Loader />}
 
-  // Функція для виконання запиту на сервер:
-  fetchImages = async query => {
-    try {
-      const { hits, totalHits } = await searchAPI.fetchImage(
-        query,
-        this.state.page,
-      );
-
-      return { hits, totalHits };
-    } catch (error) {
-      Notify.failure(`Error: ${error.message}`);
-      this.setState({ isLoading: false });
-    }
-  };
-
-  // Функція для оновлення стану за результатами запиту на сервер
-  updateState = ({ hits, totalHits }) => {
-    this.setState(
-      prevState => {
-        return {
-          imagesList:
-            this.state.page === 1
-              ? [...hits]
-              : [...prevState.imagesList, ...hits],
-          totalHits,
-          isLoading: false,
-        };
-      },
-      () => {
-        // Обробка повідомлень
-        const { imagesList, totalHits, page } = this.state;
-        const remainsItems = totalHits - imagesList.length;
-        if (totalHits > 0 && page === 1) {
-          Notify.success(`We found ${totalHits} images!`, { timeout: 2000 });
-        }
-
-        if (totalHits === 0) {
-          Notify.info(`Sorry we not found any images with this request`);
-        } else {
-          if (remainsItems === 0) {
-            Notify.info(`It's all that we have by this request.`);
-          }
-        }
-      },
-    );
-  };
-
-  render() {
-    const { imagesList, totalHits, isLoading } = this.state;
-    const remainsItems = totalHits - imagesList.length;
-    const isDisabledLoadMoreBtn = remainsItems === 0;
-
-    return (
-      <Container>
-        <SearchBar onSetQuery={this.searchBtn} />
-        <ImageGalleryV1 imagesList={imagesList} />
-
-        {isLoading && <Loader />}
-        {imagesList.length > 0 && (
-          <Button
-            onLoadMore={this.loadMoreBtn}
-            isDisabledLoadMoreBtn={isDisabledLoadMoreBtn}
-            ref={this.loadMoreBtnRef}
-          />
-        )}
-      </Container>
-    );
-  }
+      {imagesList.length > 0 && (
+        <Button
+          onLoadMore={loadMoreBtn}
+          isDisabledLoadMoreBtn={remainsItems.current === 0}
+          ref={loadMoreBtnRef}
+        />
+      )}
+    </Container>
+  );
 }
 
 export default ImageFinder;
