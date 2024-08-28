@@ -8,7 +8,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import LoginForm from "LoginForm";
 // import Materials from "Materials";
 // import Publications from "Publications";
-import VideoPlayer from "VideoPlayer";
+// import VideoPlayer from "VideoPlayer";
+import Phonebook from "Phonebook";
 
 class App extends Component {
   state = {};
@@ -24,7 +25,8 @@ class App extends Component {
         {/* <LoginForm /> */}
         {/* <Materials /> */}
         {/* <Publications /> */}
-        <VideoPlayer />
+        {/* <VideoPlayer /> */}
+        <Phonebook />
       </>
     );
   }
