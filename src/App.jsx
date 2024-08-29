@@ -10,7 +10,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import Publications from "Publications";
 // import VideoPlayer from "VideoPlayer";
 // import Phonebook from "Phonebook";
-import ImageFinder from "ImageFinder";
+// import ImageFinder from "ImageFinder";
+import Feedbacks from "Feedbacks";
 
 class App extends Component {
   state = {};
@@ -28,7 +29,8 @@ class App extends Component {
         {/* <Publications /> */}
         {/* <VideoPlayer /> */}
         {/* <Phonebook /> */}
-        <ImageFinder />
+        {/* <ImageFinder /> */}
+        <Feedbacks />
       </>
     );
   }
