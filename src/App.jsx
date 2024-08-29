@@ -16,7 +16,8 @@ import { GlobalStyle } from "GlobalStyle";
 // import Memoization from "Memoization";
 // import News from "News";
 // import Phonebook from "Phonebook";
-import ImageFinder from "ImageFinder";
+// import ImageFinder from "ImageFinder";
+import Feedbacks from "Feedbacks";
 
 function App() {
   return (
@@ -56,7 +57,8 @@ function App() {
 
       {/* <Phonebook /> */}
 
-      <ImageFinder />
+      {/* <ImageFinder /> */}
+      <Feedbacks />
     </>
   );
 }
