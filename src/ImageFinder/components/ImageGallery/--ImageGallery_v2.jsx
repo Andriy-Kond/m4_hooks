@@ -13,6 +13,8 @@ Notify.init({
   cssAnimationStyle: "from-right",
 });
 
+// В цьому варіанті є проблема - важко відслідкувати коли була натиснута кнопка SearchFormBtn (у SearchBar), а коли loadMoreBtn у ImageGalleryV2. А без цього важко писати useEffect для обробки події - коли page установити ===1 і як робити новий запит по тому самому запиту. В результаті треба створювати якийсь контекст плюс додаткові useRef(), що ускладнює код, особливо у розумінні іншим програмістом.
+
 function ImageFinder({ query }) {
   const loadMoreBtnRef = createRef(); // Додавання посилання на кнопку "Load More"
   const remainsItems = useRef(); // підрахунок зображень, що залишились за певним запитом

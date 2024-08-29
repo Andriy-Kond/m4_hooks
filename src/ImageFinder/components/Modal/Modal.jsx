@@ -1,9 +1,10 @@
-import React, { Component, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import * as basicLightbox from "basiclightbox";
-// import "basiclightbox/dist/basicLightbox.min.css";
 import "basiclightbox/src/styles/main.scss";
+// import "basiclightbox/dist/basicLightbox.min.css";
+
 import { Overlay, ModalIns } from "./Modal.styled";
-import { setIn } from "formik";
 
 // $basicLightbox__background: rgba(0, 0, 0, 0.8); // Background color
 // $basicLightbox__zIndex: 1000; // Stack order
@@ -11,85 +12,50 @@ import { setIn } from "formik";
 // $basicLightbox__timing: ease; // Transition timing
 
 function ModalWindow({ image, toggleShowImage }) {
-  const [instance, setInstance] = useState(null);
+  const isFirstRender = useRef(false);
 
-  const handleKeydownEsc = e => {
-    if (e.code === "Escape") {
-      instance.close();
-    }
-  };
-
-  const newInstance = basicLightbox.create(
-    `
+  const [instance] = useState(
+    basicLightbox.create(
+      `
     <${Overlay}>
     <${ModalIns}>
     <img src=${image.largeImageURL} alt=${image.tags} />
     </${ModalIns}>
     </${Overlay}>
     `,
-    {
-      onClose: () => {
-        // toggleShowImage();
+      {
+        onClose: () => {
+          toggleShowImage();
+        },
       },
-    },
+    ),
   );
 
-  setInstance(newInstance);
-
-  instance?.show();
-
   useEffect(() => {
+    // ! basicLightbox на хуках працює непердбачувано - якщо переносити на хуки по правилах, то він робить або подвійний рендер елементу ModalWindow у DOM, або його безкінечний рендер навіть якщо у ModalWindow немає жодного useEffect, або не спрацьовує додатковий код в його onClose(). Хоча на класах все працює як треба.
+
+    // Причина: чомусь instance.show() спрацьовує 2 рази при першому рендері ModalWindow, через що запускаються дві модалки. Навіть якщо в модалці немає ніякого useEffect. Тому довелось зробити такий костиль у вигляді перевірки першого рендеру у useEffect, щоб запустити instance.show() лише один раз.
+    if (!isFirstRender.current) {
+      isFirstRender.current = true;
+      return;
+    }
+
+    instance.show();
+
+    const handleKeydownEsc = e => {
+      if (e.code === "Escape") {
+        instance.close();
+      }
+    };
+
     window.addEventListener("keydown", handleKeydownEsc);
 
     return () => {
       window.removeEventListener("keydown", handleKeydownEsc);
     };
-  }, []);
+  }, [instance]);
 
   return null;
 }
-
-// class ModalWindowOld extends Component {
-//   state = {
-//     instance: null,
-//   };
-
-//   componentDidMount = () => {
-//     window.addEventListener("keydown", this.handleKeydownEsc);
-
-//     const { image } = this.props;
-//     const instance = basicLightbox.create(
-//       ` <${Overlay}>
-//         <${ModalIns}>
-//         <img src=${image.largeImageURL} alt=${image.tags} />
-//         </${ModalIns}>
-//         </${Overlay}>
-//         `,
-//       {
-//         onClose: () => {
-//           this.props.toggleShowImage();
-//         },
-//       },
-//     );
-
-//     this.setState({ instance }, () => {
-//       this.state.instance.show();
-//     });
-//   };
-
-//   componentWillUnmount() {
-//     window.removeEventListener("keydown", this.handleKeydownEsc);
-//   }
-
-//   handleKeydownEsc = e => {
-//     if (e.code === "Escape") {
-//       this.state.instance.close();
-//     }
-//   };
-
-//   render() {
-//     return <></>;
-//   }
-// }
 
 export default ModalWindow;
