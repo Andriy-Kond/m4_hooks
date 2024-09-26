@@ -1,29 +1,34 @@
 import { GlobalStyle } from "GlobalStyle";
 
-// import AppBar from "context/AppBar";
+import AppBar from "context/AppBar";
 
-// import ColorPicker from "ColorPicker";
-// import Pokemon from "Pokemon";
-// import Todo from "Todo";
-// import Tabs from "Tabs";
-// import Clock from "Clock";
-// import LoginForm from "LoginForm";
-// import Materials from "Materials";
-// import Publications from "Publications";
-// import VideoPlayer from "VideoPlayer";
-// import SignupForm from "SignupForm";
-// import Counter from "Counter";
-// import Memoization from "Memoization";
-// import News from "News";
-// import Phonebook from "Phonebook";
-// import ImageFinder from "ImageFinder";
+import ColorPicker from "ColorPicker";
+import Pokemon from "Pokemon";
+import Todo from "Todo";
+import Tabs from "Tabs";
+import Clock from "Clock";
+import LoginForm from "LoginForm";
+import Materials from "Materials";
+import Publications from "Publications";
+import VideoPlayer from "VideoPlayer";
+import SignupForm from "SignupForm";
+import Counter from "Counter";
+import Memoization from "Memoization";
+import News from "News";
+import Phonebook from "Phonebook";
+import ImageFinder from "ImageFinder";
 import Feedbacks from "Feedbacks";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "pages";
 
 function App() {
   return (
     <>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
       <GlobalStyle />
-      {/* <AppBar />
+      <AppBar />
       <hr />
       <Clock />
       <Clock />
@@ -53,11 +58,11 @@ function App() {
       <VideoPlayer />
       <hr />
       <Memoization />
-      <hr /> */}
+      <hr />
 
-      {/* <Phonebook /> */}
+      <Phonebook />
 
-      {/* <ImageFinder /> */}
+      <ImageFinder />
       <Feedbacks />
     </>
   );
